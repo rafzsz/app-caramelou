@@ -1,6 +1,24 @@
 {
   "extends": "expo/tsconfig.base",
+  "target": "es2015",
+  "module": "es2015",
+  "moduleResolution": "node",
+  "jsx": "react-native",
+  "outDir": "compiled",
+  "rootDir": "src",
   "compilerOptions": {
     "strict": true
-  }
+  },
+  // "paths": {
+  //   "components/*":["src/components/*"]
+  // },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "android",
+    "ios",
+    "compiled",
+    "node_modules"
+  ]
 }

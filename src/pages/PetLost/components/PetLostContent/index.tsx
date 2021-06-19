@@ -21,13 +21,13 @@ const PetLostContent = (): JSX.Element => {
                     Pinheirinho, Curitiba-PR
                 </Text>
             </View>
-            <Text style={styles.textName}>Nome: Fiona</Text>
+            <Text style={styles.textName}>Nome: Bilu</Text>
             <View style={styles.typeAndDate}>
                 <Text style={styles.textType}>Raça: Vira-lata</Text>
                 <Text style={styles.textDate}>Sumiu: 03/03/2021</Text>
             </View>
             <Text style={styles.descriptionPet}>
-                Fugiu de casa, ela é dócil e possui uma coleira azul com o nome Fiona, atende também por fi ou fifi.
+                Fugiu de casa, ela é dócil e possui uma coleira azul com o nome Bilu, atende também por Bil ou Lulu.
                 Sumiu na região do Pinheirinho em Curitiba-PR.
             </Text>
             <Image

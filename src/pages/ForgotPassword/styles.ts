@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
         textAlignVertical: 'center',
         fontWeight: 'bold',
         fontSize: 18,
+        fontFamily: 'Montserrat_700Bold'
     },
     form: {
         marginTop: 120,
@@ -54,10 +55,12 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'left',
         paddingHorizontal: 10,
+        fontFamily: 'Montserrat_400Regular'
     },
     labelText: {
         color: '#f2f2f2',
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Montserrat_400Regular'
     },
     divBack: {
         flexDirection: 'row',
@@ -67,6 +70,7 @@ export const styles = StyleSheet.create({
     backText: {
         color: '#bdbdbd',
         fontSize: 18,
+        fontFamily: 'Montserrat_400Regular'
     },
     imgHeader: {
         zIndex: 1,

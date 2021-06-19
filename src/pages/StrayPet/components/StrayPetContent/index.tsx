@@ -31,7 +31,7 @@ const StrayPetContent = (): JSX.Element => {
             <View style={styles.containerLocation}>
                 <Image source={pinMap} />
                 <Text style={styles.locationPet}>
-                    Rua Arthur Manoel Iwersen, 570
+                    Rua Billy, 100
                 </Text>
             </View>
             <Text style={styles.descriptionPet}>

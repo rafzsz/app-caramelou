@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import NavigationService, { navigationRef } from './src/services/NavigationService';
+import api from './src/services/api'
 
 //FONTS
 import AppLoading from 'expo-app-loading';
@@ -46,6 +47,10 @@ const App = (): JSX.Element => {
     return <AppLoading />
   }
 
+  const getUsers = async () => {
+    const userData = await api.get('/user')
+    console.log(userData)
+  }
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator

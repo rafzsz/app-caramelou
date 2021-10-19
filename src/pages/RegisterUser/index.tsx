@@ -23,6 +23,7 @@ function AlertRegister() {
 }
 
 import NavigationService from '~/services/NavigationService';
+import api from '~/services/api';
 
 const RegisterUser = (): JSX.Element => {
     const [userName, setUserName] = useState('');
@@ -36,6 +37,22 @@ const RegisterUser = (): JSX.Element => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [cpfUser, setCpfUser] = useState('');
+
+    const sendRegisterUser = async () => {
+        const response = await api.post('/user', {
+            name: userName,
+            mail: userEmail,
+            password: password,
+            adress: userAdress,
+            number: adressNumber,
+            state: stateUser,
+            zip: zipCode,
+            phone: phoneNumber,
+            birthDate: btdayUser,
+            cpf: cpfUser,
+        });
+        console.log("Response: ", response);
+    }
 
     return (
         <ScrollView style={styles.containerRegister}>
@@ -153,12 +170,13 @@ const RegisterUser = (): JSX.Element => {
                 <TouchableOpacity
                     accessibilityLabel="Botão para finalizar cadastro"
                     style={styles.registerButton}
-                    onPress={() => {
-                        Alert.alert("Parabéns!", "Cadastro realizado com sucesso!", [{
-                            onPress: () => NavigationService.navigate('Login')
-                        }])
-                    }}
-                // onPress={() => Alert.alert("Discard changes?", [ { onPress: () => NavigationService.navigate('Login') } ])} // 
+                    // onPress={() => {
+                    //     Alert.alert("Parabéns!", "Cadastro realizado com sucesso!", [{
+                    //         onPress: sendRegister
+                    //     }])
+                    // }}
+                    // onPress={() => Alert.alert("Discard changes?", [ { onPress: () => NavigationService.navigate('Login') } ])} // 
+                    onPress={sendRegisterUser}
                 >
                     <Text style={styles.registerButtonText}>finalizar cadastro</Text>
                 </TouchableOpacity>

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   },
   contentsHome: {
     backgroundColor: '#fff',
-    borderRadius: 25,
+    borderBottomEndRadius: 25,
     padding: 25,
     paddingBottom: 80,
   }

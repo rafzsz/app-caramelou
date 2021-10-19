@@ -5,7 +5,8 @@ import iconHome from "~/assets/iconHome.png";
 import iconPets from "~/assets/iconPets.png";
 import iconGps from "~/assets/iconGps.png";
 // import iconMenu from "~/assets/iconMenu.png";
-import iconOut from "~/assets/iconOut.png";
+import iconUser from "~/assets/iconUserFooter.png";
+import iconHand from "~/assets/iconHandHeart.png"
 
 import { styles } from './styles';
 
@@ -39,6 +40,14 @@ const Footer = (): JSX.Element => {
                 />
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={() => NavigationService.navigate('PetLost')}//ALTERAR P/ AJUDA
+            >
+                <Image
+                    source={iconHand}
+                    style={{ width: 30, height: 30 }}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
                 onPress={() => {
                     Alert.alert("Poxa, volte logo! :( ", "Você realizou o logout e será redirecionado à tela de Login.", [{
                         onPress: () => NavigationService.navigate('Login')
@@ -46,7 +55,7 @@ const Footer = (): JSX.Element => {
                 }}
             >
                 <Image
-                    source={iconOut}
+                    source={iconUser}
                     style={{ width: 30, height: 30 }}
                 />
             </TouchableOpacity>

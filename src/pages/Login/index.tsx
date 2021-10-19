@@ -15,10 +15,18 @@ import checkboxCheck from '~/assets/checkbox-marked.png'
 
 import NavigationService from '~/services/NavigationService';
 
+
 const Login = (): JSX.Element => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+
+    // const signIn = async () => {
+    //     const response = await api.post('/auth/authenticate', {
+    //         login: login,
+    //         password: password,
+    //     });
+    // };
 
     return (
         <>
@@ -50,6 +58,7 @@ const Login = (): JSX.Element => {
                             <TouchableOpacity
                                 accessibilityLabel="Botão para anexar foto do animal perdido"
                                 onPress={() => NavigationService.navigate('Home')}
+                            // onPress={singIn}
                             >
                                 <Text style={styles.buttonLogin}>Entrar</Text>
                             </TouchableOpacity>

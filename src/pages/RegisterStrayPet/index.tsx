@@ -12,7 +12,8 @@ interface StrayPetProps {
     values: Login;
 }
 
-import NavigationService from '~/services/NavigationService';
+// import NavigationService from '~/services/NavigationService';
+import api from '~/services/api';
 
 const RegisterStrayPet = (): JSX.Element => {
     const [typePet, setTypePet] = useState('');
@@ -20,6 +21,17 @@ const RegisterStrayPet = (): JSX.Element => {
     const [dateFind, setDateFind] = useState('');
     const [hourFind, setHourFind] = useState('');
     const [descriptionPet, setDescriptionPet] = useState('');
+
+    const sendRegister = async () => {
+        const response = await api.post('/strayPet', {
+            type: typePet,
+            location: adressPet,
+            date: dateFind,
+            description: descriptionPet,
+        });
+        console.log("Response: ", response);
+        const status = response.status
+    }
 
     return (
         <>
@@ -75,10 +87,12 @@ const RegisterStrayPet = (): JSX.Element => {
                         <Text style={styles.attPhoto}>Anexar foto do animal</Text>
                     </TouchableOpacity>
                     <Text style={styles.obs}>* Formatos suportados: .jpg, .jpeg, .png</Text>
+                    { }
                     <TouchableOpacity
                         accessibilityLabel="Botão para finalizar cadastro do animal abandonado"
                         style={styles.registerButton}
-                        onPress={() => NavigationService.navigate('StrayPet')}
+                        // onPress={() => NavigationService.navigate('StrayPet')}
+                        onPress={sendRegister}
                     >
                         <Text style={styles.registerButtonText}>registrar abandono</Text>
                     </TouchableOpacity>

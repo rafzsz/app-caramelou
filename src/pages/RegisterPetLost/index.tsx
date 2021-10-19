@@ -5,6 +5,7 @@ import Footer from '~/components/Footer';
 import { styles } from './styles';
 
 import NavigationService from '~/services/NavigationService';
+import api from '~/services/api';
 
 type Login = {
     email: string;
@@ -21,6 +22,18 @@ const RegisterPetLost = (): JSX.Element => {
     const [breedPet, setBreedPet] = useState(''); //raça
     const [descriptionPet, setDescriptionPet] = useState('');
     const [lastLocation, setLastLocation] = useState('');
+
+    const sendRegister = async () => {
+        const response = await api.post('/strayPet', {
+            name: namePet,
+            type: typePet,
+            lastSee: lastLocation,
+            date: dateLost,
+            description: descriptionPet,
+            breed: breedPet,
+        });
+        console.log("Response: ", response);
+    }
 
     return (
         <>
@@ -84,7 +97,8 @@ const RegisterPetLost = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para finalizar cadastro do animal perdido"
                         style={styles.registerButton}
-                        onPress={() => NavigationService.navigate('PetLost')}
+                        // onPress={() => NavigationService.navigate('PetLost')}
+                        onPress={sendRegister}
                     >
                         <Text style={styles.registerButtonText}>registrar sumiço</Text>
                     </TouchableOpacity>

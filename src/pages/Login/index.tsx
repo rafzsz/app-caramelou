@@ -9,11 +9,12 @@ import {
 
 import { styles } from './styles';
 
-import logo from "~/assets/logo.png";
+import icon from "../../../assets/icon.png";
 import imgHeader from "~/assets/login-pets.png";
 import checkboxCheck from '~/assets/checkbox-marked.png'
 
 import NavigationService from '~/services/NavigationService';
+import api from '~/services/api';
 
 
 const Login = (): JSX.Element => {
@@ -28,6 +29,8 @@ const Login = (): JSX.Element => {
     //     });
     // };
 
+    const dataUser = api.get('/user').then(response => response.data).then(console.log)
+
     return (
         <>
             <View style={styles.container}>
@@ -39,8 +42,8 @@ const Login = (): JSX.Element => {
                 <View style={styles.contentsLogin}>
                     <View style={styles.login}>
                         <Image
-                            source={logo}
-                            style={styles.logo}
+                            source={icon}
+                            style={styles.icon}
                         />
                         <View style={styles.form}>
                             <TextInput

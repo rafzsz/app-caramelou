@@ -24,7 +24,7 @@ const RegisterPetLost = (): JSX.Element => {
     const [lastLocation, setLastLocation] = useState('');
 
     const sendRegister = async () => {
-        const response = await api.post('/strayPet', {
+        const response = await api.post('/LostPet', {
             name: namePet,
             type: typePet,
             lastSee: lastLocation,

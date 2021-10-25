@@ -6,8 +6,12 @@ import { styles } from './styles';
 import strayBig1 from "~/assets/strayBig1.png";
 import strayBig2 from "~/assets/strayBig2.png";
 import pinMap from "~/assets/iconPinMap.png";
+import api from '~/services/api';
 
 const StrayPetContent = (): JSX.Element => {
+
+    const dataPet = api.get('/strayPet').then(response => response.data).then(console.log)
+
     return (
         <View style={styles.contentsStrayPet}>
             <Image

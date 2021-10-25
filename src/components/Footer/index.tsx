@@ -40,7 +40,7 @@ const Footer = (): JSX.Element => {
                 />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => NavigationService.navigate('PetLost')}//ALTERAR P/ AJUDA
+                onPress={() => NavigationService.navigate('HelpRequests')}
             >
                 <Image
                     source={iconHand}

@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     login: {
         alignItems: 'center',
     },
-    logo: {
+    icon: {
         position: 'absolute',
         top: -100,
     },

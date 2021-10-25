@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         height: 600
     },
-    logo: {
+    icon: {
         position: 'absolute',
         top: -100,
     },

@@ -5,6 +5,10 @@
     "name": "app-caramelou",
     "slug": "app-caramelou",
     "version": "1.0.0",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover"
+    },
     "assetBundlePatterns": [
       "**/*"
     ]

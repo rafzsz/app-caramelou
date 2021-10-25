@@ -27,6 +27,7 @@ import PetLost from './src/pages/PetLost';
 import RegisterStrayPet from './src/pages/RegisterStrayPet';
 import RegisterPetLost from './src/pages/RegisterPetLost';
 import RegisterUser from './src/pages/RegisterUser';
+import HelpRequests from './src/pages/HelpRequests';
 
 //NAVEGATION
 import 'react-native-gesture-handler';
@@ -119,6 +120,13 @@ const App = (): JSX.Element => {
           component={ForgotPassword}
           options={{
             title: "Esqueceu a Senha"
+          }}
+        />
+        <Stack.Screen
+          name="HelpRequests"
+          component={HelpRequests}
+          options={{
+            title: "Pedidos de Ajuda"
           }}
         />
       </Stack.Navigator>

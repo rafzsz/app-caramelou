@@ -3,7 +3,7 @@ import { View, Image, TextInput, TouchableOpacity, Text } from 'react-native';
 
 import { styles } from './styles';
 
-import logo from "~/assets/logo.png";
+import icon from "../../../assets/icon.png";
 import back from "~/assets/chevron-left.png";
 import imgHeader from "~/assets/login-pets.png";
 
@@ -23,8 +23,8 @@ const ForgotPassword = (): JSX.Element => {
             <View style={styles.contentsLogin}>
                 <View style={styles.login}>
                     <Image
-                        source={logo}
-                        style={styles.logo}
+                        source={icon}
+                        style={styles.icon}
                     />
                     <View style={styles.form}>
                         <Text style={styles.labelText}>Digite seu e-mail</Text>

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 // import AppLoading from "expo-app-loading";
 import { TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ContextWrapper, AppContext } from './src/contexts/auth'
 
 import NavigationService, { navigationRef } from './src/services/NavigationService';
 import api from './src/services/api'
@@ -36,7 +37,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
+export const Wrapper = (): JSX.Element => {
+  return <ContextWrapper><App /></ContextWrapper>
+}
+
 const App = (): JSX.Element => {
+  const context = useContext(AppContext);
+
   const [fontsLoaded] = useFonts({
     Montserrat_900Black,
     Montserrat_700Bold,
@@ -48,30 +55,23 @@ const App = (): JSX.Element => {
     return <AppLoading />
   }
 
-  const getUsers = async () => {
-    const userData = await api.get('/user')
-    console.log(userData)
-  }
-  return (
-    <NavigationContainer ref={navigationRef}>
+  if (context.store.token != '') {
+    return (
+      <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{
           headerLeft: () => (
-            <TouchableOpacity onPress={() => NavigationService.navigate("Home")}>
+            <TouchableOpacity
+              onPress={() => context.store.token == ''
+                ? NavigationService.navigate("Login")
+                : NavigationService.navigate("Home")}
+            >
               <MaterialIcons name="arrow-back" size={25} />
             </TouchableOpacity>
           )
         }}
       >
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            title: "Login",
-            headerLeft: () => <></>
-          }}
-        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -108,6 +108,40 @@ const App = (): JSX.Element => {
             title: "Cadastrar animal perdido"
           }}
         />
+        
+        <Stack.Screen
+          name="HelpRequests"
+          component={HelpRequests}
+          options={{
+            title: "Pedidos de Ajuda"
+          }}
+        />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }
+  return (
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => NavigationService.navigate('Login')}
+            >
+              <MaterialIcons name="arrow-back" size={25} />
+            </TouchableOpacity>
+          )
+        }}
+      >
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: "Login",
+            headerLeft: () => <></>
+          }}
+        />
         <Stack.Screen
           name="RegisterUser"
           component={RegisterUser}
@@ -120,13 +154,6 @@ const App = (): JSX.Element => {
           component={ForgotPassword}
           options={{
             title: "Esqueceu a Senha"
-          }}
-        />
-        <Stack.Screen
-          name="HelpRequests"
-          component={HelpRequests}
-          options={{
-            title: "Pedidos de Ajuda"
           }}
         />
       </Stack.Navigator>

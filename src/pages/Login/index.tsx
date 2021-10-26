@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     View,
     Image,
@@ -15,19 +15,24 @@ import checkboxCheck from '~/assets/checkbox-marked.png'
 
 import NavigationService from '~/services/NavigationService';
 import api from '~/services/api';
+import { AppContext } from '~/contexts/auth';
 
 
 const Login = (): JSX.Element => {
-
-    const [login, setLogin] = useState('');
+    const context = useContext(AppContext);
+    
+    const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [logado, setLogado] = useState(false);
 
-    // const signIn = async () => {
-    //     const response = await api.post('/auth/authenticate', {
-    //         login: login,
-    //         password: password,
-    //     });
-    // };
+        const singIn = async () => {
+            const response = await api.post<{token:string}>('/login', {
+                mail: userEmail,
+                password: password,
+            });
+            console.log("Response: ", response);
+            context.actions.setToken(response.data?.token)
+        }
 
     const dataUser = api.get('/user').then(response => response.data).then(console.log)
 
@@ -48,9 +53,9 @@ const Login = (): JSX.Element => {
                         <View style={styles.form}>
                             <TextInput
                                 style={styles.input}
-                                placeholder='seu login'
-                                onChangeText={login => setLogin(login)}
-                                defaultValue={login}
+                                placeholder='seu email'
+                                onChangeText={userEmail => setUserEmail(userEmail)}
+                                defaultValue={userEmail}
                             />
                             <TextInput
                                 style={styles.input}
@@ -59,9 +64,11 @@ const Login = (): JSX.Element => {
                                 defaultValue={password}
                             />
                             <TouchableOpacity
-                                accessibilityLabel="Botão para anexar foto do animal perdido"
-                                onPress={() => NavigationService.navigate('Home')}
-                            // onPress={singIn}
+                                accessibilityLabel="Botão para entrar no sistema"
+                                onPress={singIn}
+                                // onPress={singIn}
+                                // onPress={() => NavigationService.navigate('Home')}
+                            
                             >
                                 <Text style={styles.buttonLogin}>Entrar</Text>
                             </TouchableOpacity>

@@ -60,15 +60,13 @@ const Login = (): JSX.Element => {
                             <TextInput
                                 style={styles.input}
                                 placeholder='sua senha'
+                                secureTextEntry={true}
                                 onChangeText={password => setPassword(password)}
                                 defaultValue={password}
                             />
                             <TouchableOpacity
                                 accessibilityLabel="Botão para entrar no sistema"
                                 onPress={singIn}
-                                // onPress={singIn}
-                                // onPress={() => NavigationService.navigate('Home')}
-                            
                             >
                                 <Text style={styles.buttonLogin}>Entrar</Text>
                             </TouchableOpacity>

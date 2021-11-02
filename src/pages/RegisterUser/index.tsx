@@ -52,6 +52,7 @@ const RegisterUser = (): JSX.Element => {
             cpf: cpfUser,
         });
         console.log("Response: ", response);
+        // NavigationService.navigate('Login')
     }
 
     return (
@@ -146,6 +147,7 @@ const RegisterUser = (): JSX.Element => {
                         <TextInput
                             style={styles.input}
                             placeholder='Sua senha'
+                            secureTextEntry={true}
                             onChangeText={password => setPassword(password)}
                             defaultValue={password}
                         />
@@ -172,10 +174,9 @@ const RegisterUser = (): JSX.Element => {
                     style={styles.registerButton}
                     // onPress={() => {
                     //     Alert.alert("Parabéns!", "Cadastro realizado com sucesso!", [{
-                    //         onPress: sendRegister
+                    //         onPress: sendRegisterUser
                     //     }])
                     // }}
-                    // onPress={() => Alert.alert("Discard changes?", [ { onPress: () => NavigationService.navigate('Login') } ])} // 
                     onPress={sendRegisterUser}
                 >
                     <Text style={styles.registerButtonText}>finalizar cadastro</Text>
